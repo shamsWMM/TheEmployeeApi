@@ -1,5 +1,5 @@
 # TheEmployeeApi
-Following Spencer Schneidenbach's [tutorial to build an ASP.NET Core API](https://schneidenbach.github.io/building-apis-with-csharp-and-aspnet-core/).
+Following Spencer Schneidenbach's [tutorial](https://schneidenbach.github.io/building-apis-with-csharp-and-aspnet-core/) to build an ASP.NET Core API.
 
 ## Required Software
 - [.NET CLI](https://dot.net)
