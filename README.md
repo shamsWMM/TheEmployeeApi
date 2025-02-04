@@ -9,3 +9,9 @@ Following Spencer Schneidenbach's [tutorial](https://schneidenbach.github.io/bui
     - SQLTools SQLite @Matheus Teixeira
 - Postman
 - Docker
+
+## NuGet Packgages
+- FluentValidation @Jeremy Skinner
+- FluentValidation.DependencyInjectionExtensions @Jeremy Skinner
+- FluentValidation.AspNetCore @Jeremy Skinner
+- Microsoft.EntityFrameworkCore.Sqlite @Microsoft
