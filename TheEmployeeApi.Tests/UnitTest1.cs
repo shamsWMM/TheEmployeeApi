@@ -82,20 +82,24 @@ public class BasicTests(CustomWebApplicationFactory factory) : IClassFixture<Cus
     public async Task UpdateEmployee_ReturnsOkResult()
     {
         var client = factory.CreateClient();
-        var response = await client
-            .PutAsJsonAsync("/employees/2", new Employee
-            {
-                FirstName = "John",
-                LastName = "Doe",
-                Address1 = "23 Main Smot"
-            });
+        var response = await client.PutAsJsonAsync("/employees/1", new Employee
+        {
+            FirstName = "John",
+            LastName = "Doe",
+            Address1 = "123 Main Smoot"
+        });
 
-        response.EnsureSuccessStatusCode();
+        if (!response.IsSuccessStatusCode)
+        {
+            var content = await response.Content.ReadAsStringAsync();
+            Assert.Fail($"Failed to update employee: {content}");
+        }
 
         using var scope = factory.Services.CreateScope();
         var db = scope.ServiceProvider.GetRequiredService<ApplicationDBContext>();
-        var employee = await db.Employees.FindAsync(2);
-        Assert.Equal("23 Main Smot", employee.Address1);
+        var employee = await db.Employees.FindAsync(1);
+        Assert.Equal("123 Main Smoot", employee.Address1);
+        Assert.Equal(CustomWebApplicationFactory.SystemClock.UtcNow.UtcDateTime, employee.LastModifiedOn);
     }
 
     [Fact]
